@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+   <title>Slides</title>
+   <meta charset="utf-8">
+   <style>
+      html,body {
+         background-color: #242424;
+         color: #dddddd;
+         font-family: "Segoe UI", Arial, Sans-Serif;
+         font-size: 30pt;
+         height: 100%;
+         text-align: center;
+         overflow-y: hidden;
+         padding: 0px;
+         margin: 0px;
+      }
+      #slide {
+         text-align: center;
+         margin-left: auto;
+         max-width: 100%;
+         max-height: 100%;
+         padding: 0px;
+         margin: 0px;
+      }
+   </style>
+</head>
+
+<body oncontextmenu="clickSlide(-1); return false;">
+   <img id="slide" src="Slide1.png" onclick="clickSlide(+1)" onerror="error()" /><br/>
+   <span id="msg"></span>
+</body>
+
+<script>
+   const slideprefix = "Slide"
+   var slidenum = 1;
+   setSlide(slidenum);
+   var dir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'))
+   document.title = dir.split('/')[dir.split('/').length - 1].replace(/%20/g, ' ')
+   document.addEventListener("keydown", keyPress);
+   if (document.getElementById('slide').addEventListener) {
+      document.getElementById('slide').addEventListener("mousewheel", mouseWheel, false);
+      document.getElementById('slide').addEventListener("DOMMouseScroll", mouseWheel, false);
+   }
+
+   function clickSlide(dir) {
+      slidenum += dir;
+      if (slidenum < 1) slidenum = 1;
+      setSlide(slidenum);
+   }
+
+   function setSlide(num) {
+      document.getElementById('msg').innerHTML = num;
+      document.getElementById('slide').src = slideprefix + num + ".png";
+   }
+
+   function error(e) {
+      slidenum -= 1;
+      if (slidenum < 1) slidenum = 1;
+      if (slidenum == 1) {
+         document.getElementById('msg').innerHTML = "<b>No slides found!</b><br/><br/>Please export all slides from PowerPoint to PNG<br/>e.g. Slide1.png, Slide2.png, etc";
+         document.getElementById('slide').remove();
+      } else {
+         setSlide(slidenum);
+      }
+   }
+
+   function mouseWheel(e) {
+      if(e.deltaY > 0) { clickSlide(+1) }
+      if(e.deltaY < 0) { clickSlide(-1) }      
+   }
+
+   function keyPress(e){
+      var kc = e.which;
+      //console.log(kc);
+      if (kc == 32 || kc == 34 || kc == 13 || kc == 40 || kc == 39) clickSlide(+1);
+      if (kc == 33 || kc == 8 || kc == 37 || kc == 38) clickSlide(-1);
+      if (kc >= 49 && kc <= 57) { var jump = kc - 48; slidenum = jump; setSlide(jump); }
+      if (kc == 66) { var elem = document.getElementById('slide'); elem.style.visibility = (elem.style.visibility == 'hidden' ? 'visible' : 'hidden') }
+   }
+
+</script>
