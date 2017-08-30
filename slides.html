@@ -29,6 +29,7 @@
    </style>
 </head>
 
+<!-- The whole page is a single img :) -->
 <body oncontextmenu="clickSlide(-1); return false;" onclick="clickSlide(+1)">
    <img id="slide" src="Slide1.png" onerror="slideError()" /><br/>
 </body>
@@ -42,7 +43,8 @@
    // Hacky code to set page title to the parent folder name
    var dir = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'))
    document.title = dir.split('/')[dir.split('/').length - 1].replace(/%20/g, ' ')
-   // Keyboard and mousewheel  events 
+   
+   // Keyboard and mousewheel events 
    document.addEventListener("keydown", keyPress);
    document.getElementById('slide').addEventListener("mousewheel", mouseWheel, false);
    document.getElementById('slide').addEventListener("DOMMouseScroll", mouseWheel, false);
@@ -78,10 +80,10 @@
    }
 
    // Keyboard navigation:
-   //  Next slide: space, pgdown, down-cursor, right-cursor
-   //  Back slide: backspace, pgup, up-cursor, left-cursor
-   //  Jump to numbered slide: Number keys 1-9
-   //  Blank screen: 'b'
+   //  Next slide:  space, pgdown, down-cursor, right-cursor
+   //  Prev slide:  backspace, pgup, up-cursor, left-cursor
+   //  Jump to numbered slide:  Number keys 1-9
+   //  Blank screen:  'b'
    function keyPress(e){
       var kc = e.which;
       //console.log(kc);
