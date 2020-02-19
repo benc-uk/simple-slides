@@ -8,11 +8,11 @@ Simple HTML based slide presenter, designed for demos and other situations where
 4) Open *slides.html* in your browser
 
 ## Controls
-Next slide: space, pgdown, down-cursor, right-cursor
-Back slide: backspace, pgup, up-cursor, left-cursor
-Blank screen: 'b'
-Hide/show slide number: 'n'
-Show elapsed time (for 5 seconds): 't'
+- Next slide: space, pgdown, down-cursor, right-cursor
+- Back slide: backspace, pgup, up-cursor, left-cursor
+- Blank screen: 'b'
+- Hide/show slide number: 'n'
+- Show elapsed time (for 5 seconds): 't'
    
 ## Note
 The *slides.html* file is expecting the PNGs for each slide to be named; Slide1.PNG, Slide2.PNG, Slide3.PNG etc. This is how PowerPoint names them by default.
