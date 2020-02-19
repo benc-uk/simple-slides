@@ -4,8 +4,8 @@ Simple HTML based slide presenter, designed for demos and other situations where
 ## Usage
 1) Export your presentation as PNG from PowerPoint, using *File --> Save As*. When prompted select **All Slides**
 2) PowerPoint will put all of the PNG files into a subdirectory 
-3) Download [release of this repo](https://github.com/benc-uk/simple-slides/releases), extract & copy *slides.html* into the directory alongside the PNG files
-4) Open *slides.html* in your browser
+3) Download [release of this repo](https://github.com/benc-uk/simple-slides/releases), extract & copy `slides.html` into the directory alongside the PNG files
+4) Open `slides.html` in your browser
 5) If planning to serve via some hosting or other means, rename `slides.html` to `index.html`
 
 ## Controls
